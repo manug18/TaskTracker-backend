@@ -9,6 +9,4 @@ data class TaskRequest(
     var priorityLevel: String,
     var isDeleted: Boolean,
     val endDate: Date
-
-
 )
