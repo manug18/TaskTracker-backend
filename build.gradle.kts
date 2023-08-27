@@ -30,6 +30,10 @@ dependencies {
     implementation("org.postgresql:postgresql:42.5.4")
     implementation("org.springframework.boot:spring-boot-starter-web")
 
+//    implementation("org.springframework.boot:spring-boot-starter-security")
+//    implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+
+
 }
 
 tasks.withType<KotlinCompile> {

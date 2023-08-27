@@ -1,10 +1,11 @@
 package com.example.Task.model
 
+import com.example.Task.dto.response.TaskResponse
 import jakarta.persistence.*
 import java.util.*
 
 @Entity
-@Table(name="task")
+@Table(name = "task")
 data class Task(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -17,17 +18,28 @@ data class Task(
     var description: String? = "",
 
     @Column
-    var priorityLevel: String,
+    var prioritylevel: String,
 
     @Column
-    var endDate: Date,
+    var enddate: Date,
 
     @Column
-    var isDeleted: Boolean,
+    var isdeleted: Boolean,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id")
     val person: Person
 
-)
+) {
+    fun toTaskResponse(): TaskResponse {
+        return TaskResponse(
+            taskId = this.id!!,
+            title = this.title!!,
+            description = this.description!!,
+            priorityLevel = this.prioritylevel!!,
+            isDeleted = this.isdeleted,
+            endDate = this.enddate
+        )
+    }
+}
 

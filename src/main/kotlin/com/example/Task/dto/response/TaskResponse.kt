@@ -1,9 +1,9 @@
-package com.example.Task.dto.request
+package com.example.Task.dto.response
 
 import java.util.*
 
-data class TaskRequest(
-//    val taskId: UUID,
+data class TaskResponse(
+    var taskId: UUID,
     var title: String,
     var description: String,
     var priorityLevel: String,
