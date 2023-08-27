@@ -4,7 +4,7 @@ import jakarta.persistence.*
 import java.util.*
 
 @Entity
-@Table
+@Table(name="task")
 data class Task(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -23,7 +23,11 @@ data class Task(
     var endDate: Date,
 
     @Column
-    var isDeleted: Boolean
+    var isDeleted: Boolean,
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "person_id")
+    val person: Person
 
 )
 

@@ -4,8 +4,8 @@ import jakarta.persistence.*
 import java.util.*
 
 @Entity
-@Table(name = "user")
-data class User(
+@Table(name = "person")
+data class Person(
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     val id: UUID? = null,
@@ -20,7 +20,10 @@ data class User(
     var email: String,
 
     @Column
-    var password:String
+    var password:String,
+
+    @OneToMany(mappedBy = "person", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    val tasks: MutableList<Task> = mutableListOf()
 
 )
 
